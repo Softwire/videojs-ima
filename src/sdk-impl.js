@@ -144,9 +144,7 @@ const SdkImpl = function(controller) {
  * Creates and initializes the IMA SDK objects.
  */
 SdkImpl.prototype.initAdObjects = function() {
-  this.adDisplayContainer = new google.ima.AdDisplayContainer(
-      this.controller.getAdContainerDiv(),
-      this.controller.getContentPlayer());
+  this.adDisplayContainer = new google.ima.AdDisplayContainer(this.controller.getAdContainerDiv());
 
   this.adsLoader = new google.ima.AdsLoader(this.adDisplayContainer);
 
@@ -343,8 +341,7 @@ SdkImpl.prototype.initAdsManager = function() {
  */
 SdkImpl.prototype.createAdsRenderingSettings = function() {
   this.adsRenderingSettings = new google.ima.AdsRenderingSettings();
-  this.adsRenderingSettings.restoreCustomPlaybackStateOnAdBreakComplete =
-      true;
+  this.adsRenderingSettings.restoreCustomPlaybackStateOnAdBreakComplete = false;
   if (this.controller.getSettings().adsRenderingSettings) {
     for (let setting in this.controller.getSettings().adsRenderingSettings) {
       if (setting !== '') {
